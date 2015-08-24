@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Blog</title>
+  <%= stylesheet_link_tag    'aoolication', 'http://fonts.googleapis.com/css?family=Raleway:400,300,600' %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#navbar-collapse-one" aria-expanded="false">
+        <span class="sr-only">Menu</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "nicolic's Blog", root_path, class: "navbar-brand" %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav pull-right">
+        <li><%= link_to 'Home', root_path %></li>
+        <% if current_user %>
+        <li><%= link_to 'New post', new_post_path %></li>
+        <li><%= link_to 'Logout', logout_path %></li>
+        <% else %>
+        <li><%= link_to 'Login', login_path %></li>
+        <li><%= link_to 'Sign up', signup_path %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="container">
+    <%= yield %>
+  </div>
+  <footer>
+    <div class="container">
+      <p class="col-xs-12 col-md-8 col-md-offset-2 text-center">&copy; <%= Time.now.year %></p>
+    </div>
+  </footer>
+  <%= debug(params) if Rails.env.development? %>
+</body>
+</html>

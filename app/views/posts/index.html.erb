@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-xs-12 col-xs-offset-0 col-md-8 col-md-offset-2">
+    <% @posts.each do |post| %>
+      <div class="post">
+        <%= link_to post.title, post_path(post), class: "post-link" %>
+        <p class="post-date"><%= Time.now.strftime("%d %b %Y") %></p>
+      </div>
+    <% end %>
+  </div>
+</div>
